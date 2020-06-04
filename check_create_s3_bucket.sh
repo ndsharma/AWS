@@ -3,7 +3,7 @@
 #set -x
 
 echo "## Check if S3 bucket exists else create it and copy the jar file."
-CODE_BUCKET="titan-ums-dev"
+CODE_BUCKET="dummy-dev"
 BUCKET_NAME=`aws s3 ls |egrep "$CODE_BUCKET$" |awk '{print$3}'`
 if [ ! "$BUCKET_NAME" == "$CODE_BUCKET" ]; then
   echo "## Start to create S3 code bucket: s3://$CODE_BUCKET"
@@ -17,7 +17,7 @@ else
 fi
 
 echo "## Start to copy files from local to S3 code bucket"
-JAR_FILE="titan-ums-assembly-0.1-SNAPSHOT.jar"
+JAR_FILE="dummy-assembly-0.1-SNAPSHOT.jar"
 cd /home/teamcity/BuildAgent/work/323a031d52d81f92/target/scala-2.11/
 # copy spark jar file
 if [ -f $JAR_FILE ]; then
